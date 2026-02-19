@@ -68,26 +68,29 @@
 }
 
 /* Hide or adjust on mobile so it doesn't block content */
-/* Specific fix for mobile: Hide search and prevent text overlap */
 @media (max-width: 768px) {
     .search-container {
-        display: none !important; /* This hides the search bar as requested */
+        display: none;
     }
-    
     .search-input { width: 100%; }
-
-    /* This creates space so the floating image doesn't hit the name */
-    header {
-        padding-top: 120px; 
+}
+        header .container {
+        padding-top: 140px; 
     }
-
-    .profile-img {
-        width: 110px;
-        height: 110px;
-        top: 20px;
-        left: 20px;
-        position: absolute; /* Keeps your original "floating" style */
-    }
+.profile-img {
+    position: absolute;
+    top: 50px;           /* Adjusts distance from top */
+    left: 50px;          /* Adjusts distance from left */
+    width: 180px;        /* Larger diameter */
+    height: 180px;       /* Keep equal to width for a perfect circle */
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+    object-fit: cover;
+    /* Increase this % to bring the person's face/body lower into the circle */
+    object-position: center 25%; 
+    z-index: 100;
+    transition: transform 0.4s ease;
 }
 
 .profile-img:hover {
