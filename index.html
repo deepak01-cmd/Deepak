@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Kumar | BI Developer & Automation Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #0072ff;
+            --bg-dark: #0a0b10;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-main: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+.search-container {
+    position: fixed; /* Keep it fixed on the screen */
+    top: 30px;
+    right: 30px;
+    text-align: right;
+    z-index: 1000; /* High z-index to stay above all sections */
+    background: rgba(10, 11, 16, 0.8); /* Semi-transparent background */
+    padding: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Blur effect for better readability */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.search-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    padding: 10px 18px;
+    border-radius: 50px;
+    color: white;
+    width: 220px;
+    outline: none;
+    transition: all 0.3s ease;
+    pointer-events: auto !important;
+}
+
+.search-input:focus {
+    width: 280px;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+/* Hide or adjust on mobile so it doesn't block content */
+@media (max-width: 768px) {
+    .search-container {
+        position: relative;
+        top: 0;
+        right: 0;
+        margin: 20px auto;
+        width: 90%;
+        text-align: center;
+        background: var(--card-bg);
+    }
+    .search-input { width: 100%; }
+}
+
+.profile-img {
+    position: absolute;
+    top: 50px;           /* Adjusts distance from top */
+    left: 50px;          /* Adjusts distance from left */
+    width: 180px;        /* Larger diameter */
+    height: 180px;       /* Keep equal to width for a perfect circle */
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.4);
+    object-fit: cover;
+    /* Increase this % to bring the person's face/body lower into the circle */
+    object-position: center 25%; 
+    z-index: 100;
+    transition: transform 0.4s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05) rotate(2deg); /* Subtle pop on hover */
+}
+
+@media (max-width: 768px) {
+    .profile-img {
+        width: 110px;
+        height: 110px;
+        top: 20px;
+        left: 20px;
+    }
+}        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1b2e 0%, #0a0b10 100%);
+            z-index: -1;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #00d4ff, #0072ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 1.1rem; color: var(--primary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px; }
+        
+        /* Fixed Tech Icon Styling */
+        .tech-icons-row { 
+            display: flex; 
+            gap: 25px; 
+            justify-content: center; 
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .tech-icons-row img { 
+            width: 45px; 
+            height: 45px; 
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .tech-icons-row img:hover { transform: scale(1.1); }
+
+        .contact-pills { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px; }
+        .pill { background: var(--card-bg); padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(0, 212, 255, 0.3); font-size: 0.85rem; text-decoration: none; color: white; transition: 0.3s; }
+        .pill:hover { background: var(--primary); color: #000; box-shadow: 0 0 15px var(--primary); }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #000;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+            margin-top: 30px;
+        }
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
+            filter: brightness(1.1);
+        }
+
+        section { padding: 80px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        h2 { font-size: 2.2rem; margin-bottom: 40px; display: flex; align-items: center; gap: 15px; color: #fff; }
+        h2::after { content: ""; height: 1px; flex: 1; background: linear-gradient(to right, var(--primary), transparent); }
+
+        .journey-box { background: var(--card-bg); padding: 35px; border-radius: 20px; border-left: 4px solid var(--primary); backdrop-filter: blur(10px); margin-bottom: 40px; }
+        .journey-box p { margin-bottom: 18px; font-size: 1.05rem; color: #bbb; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            transition: 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); background: rgba(255, 255, 255, 0.07); }
+        .card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
+        .card h4 { color: #fff; font-size: 0.95rem; margin-bottom: 15px; opacity: 0.8; }
+        
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .tag { background: rgba(0, 212, 255, 0.1); color: var(--primary); padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(0, 212, 255, 0.2); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; margin-bottom: 40px; }
+        .stat-item h4 { font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
+        .stat-item p { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; }
+
+        ul { padding-left: 18px; color: #aaa; font-size: 0.9rem; }
+        li { margin-bottom: 8px; }
+
+        .edu-cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .edu-cert-grid { grid-template-columns: 1fr; }
+        }
+.cta-block {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 114, 255, 0.1) 100%);
+    padding: 60px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    margin: 80px 0;
+    backdrop-filter: blur(10px);
+}
+
+.cta-block h2 {
+    justify-content: center;
+    border-bottom: none;
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-block p {
+    font-size: 1.2rem;
+    color: #bbb;
+    margin-bottom: 30px;
+}
+
+.cta-block .btn-download {
+    margin-top: 0; /* Resets header margin */
+}
+    </style>
+</head>
+<body>
+     <img src="profile.jpeg" alt="Deepak Kumar" class="profile-img">
+    <div class="bg-glow"></div>
+
+        <div class="search-container" data-aos="fade-left">
+        <label class="search-label">Looking for something specific?</label>
+        <input type="text" id="portfolioSearch" class="search-input" placeholder="e.g., 'show me your skills' or 'projects'...">
+        </div>
+
+    <header>
+         
+        <div class="container" data-aos="zoom-in">
+            <h1>DEEPAK KUMAR</h1>
+            <p class="subtitle">Power BI Developer | Data Analyst</p>
+            
+            <div class="tech-icons-row">
+                <img src="icons/powerbi.svg" alt="Power BI">
+                <img src="icons/excel.svg" alt="Excel">
+                <img src="icons/sql.svg" alt="SQL">
+            </div>
+
+            <p class="subtitle">Skill Gap Analysis | Skill Taxonomy | Workflow Automation</p>
+            <p class="subtitle">Scalable Data Solutions | Product Quality Improvement</p>            
+            
+            <div class="contact-pills">
+                <a href="mailto:Deepakpce01@gmail.com" class="pill"><i class="fas fa-envelope"></i> Deepakpce01@gmail.com</a>
+                <a href="tel:+919560467216" class="pill"><i class="fas fa-phone"></i> +91-9560467216</a>
+                <span class="pill"><i class="fas fa-map-marker-alt"></i> Open to Relocation</span>
+                <span class="pill"><i class="fas fa-briefcase"></i> Total-7 years Experience</span>
+            </div>
+
+            <a href="Deepak_Kumar_Resume.docx" class="btn-download" download>
+                <i class="fas fa-file-download"></i> Download Resume
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="journey" data-aos="fade-up">
+            <h2>Career Journey & Expertise</h2>
+            <div class="journey-box">
+                <p>I began my career at <strong>Hinduja Global Solutions</strong> as a Customer Service Representative and transitioned into MIS and reporting through Excel-driven analytics.</p>
+                <p>I later joined <strong>Spire Technologies</strong> — a product-based company focused on AI-driven HR transformation — as an Analyst in Product Quality & Metrics, where I handled data extraction, cleansing, validation and quality optimization.</p>
+                <p>After upskilling in <strong>Python</strong>, I moved into automation, building large-scale crawlers using Python, Selenium and Octoparse, and automating workflows for high-volume data ingestion and processing.</p>
+                <p>I specialize in scalable data systems, dashboards and intelligent automation. Used AI-powered tools for rapid research, documentation, learning acceleration and workflow optimization. My core stack includes Python, SQL, Excel, Power BI and no-code automation tools — always focused on solving real business problems efficiently.</p>
+                <p style="font-size: 0.95rem; font-style: italic; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                    I specialize in handling large datasets (2.5M+ records) and turning raw data into functional executive dashboards. Strong focus on reducing manual reporting work through automation and AI-powered tools.
+                </p>
+            </div>
+        </section>
+
+        <section id="tech-stack" data-aos="fade-up">
+            <h2>Technical Stack</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>BI & Visualization</h3>
+                    <div class="tags">
+                        <span class="tag">Power BI (DAX, Power Query)</span>
+                        <span class="tag">Excel</span>
+                        <span class="tag">Dashboards</span>
+                        <span class="tag">KPI Tracking</span>
+                    </div>
+                    <h3 style="margin-top:20px;">Database</h3>
+                    <div class="tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Programming</h3>
+                    <div class="tags">
+                        <span class="tag">Python (Pandas, NumPy)</span>
+                        <span class="tag">VBA</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <h3 style="margin-top:20px;">Tools</h3>
+                    <div class="tags">
+                        <span class="tag">Octoparse</span>
+                        <span class="tag">Jira</span>
+                        <span class="tag">Putty</span>
+                        <span class="tag">WinSCP</span>
+                        <span class="tag">Postman</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Specialties</h3>
+                    <div class="tags">
+                        <span class="tag">Predictive Analytics</span>
+                        <span class="tag">Performance Optimization</span>
+                        <span class="tag">ETL Pipelines</span>
+                        <span class="tag">Stakeholder Management</span>
+                        <span class="tag">Data Modeling</span>
+                        <span class="tag">Skill Taxonomy</span>
+                    </div>
+                    <h3 style="margin-top:20px;">Learning</h3>
+                    <div class="tags"><span class="tag">AI Agent workflow (N8N Basics)</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 data-aos="fade-right">Professional Experience</h2>
+            
+            <div class="stats-grid" data-aos="fade-up">
+                <div class="stat-item"><h4>2.5M+</h4><p>Records Managed</p></div>
+                <div class="stat-item"><h4>7,000+</h4><p>Companies</p></div>
+                <div class="stat-item"><h4>3%</h4><p>Relevancy Gain</p></div>
+            </div>
+
+            <div class="card" style="margin-bottom:25px;" data-aos="fade-up">
+                <span style="float:right; opacity:0.5;">Aug 2023 – Present</span>
+                <h3>Senior Analyst (Automation & BI)</h3>
+                <h4>Spire Technologies & Solutions | Bangalore/Remote</h4>
+                <ul>
+                    <li>Built automated pipelines for 2.5M+ records, cutting reporting time.</li>
+                    <li>Designed Power BI dashboards for leadership tracking real-time performance and forecasting.</li>
+                    <li>Created single source of truth by integrating structured and semi-structured data.</li>
+                    <li>Automated workflows and ETL tasks using Python scripts.</li>
+                    <li>Developed data models for workforce planning and strategic decision-making.</li>
+                </ul>
+            </div>
+
+            <div class="card" style="margin-bottom:25px;" data-aos="fade-up">
+                <span style="float:right; opacity:0.5;">Feb 2020 – Aug 2023</span>
+                <h3>Data Analyst (Product Metrics)</h3>
+                <h4>Spire Technologies & Solutions | Bangalore/Remote</h4>
+                <ul>
+                    <li>Handled full BI lifecycle: SQL extraction, Power BI modeling, and presentation.</li>
+                    <li>Created dashboards to monitor product performance and identified optimization areas.</li>
+                    <li>Ran A/B tests and statistical analysis that led to a 3% increase in system relevancy.</li>
+                </ul>
+            </div>
+
+            <div class="card" data-aos="fade-up">
+                <span style="float:right; opacity:0.5;">Apr 2018 – Jan 2020</span>
+                <h3>CRO</h3>
+                <h4>Hinduja Global Solutions | Noida, India</h4>
+                <ul>
+                    <li>Handled Inbound/Outbound calls and escalated issues to concerned teams.</li>
+                    <li>Used SQL and Excel to track operational trends and identify wasted resources.</li>
+                    <li>Built daily reports to improve team efficiency and resource use.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 data-aos="fade-right">Key Projects</h2>
+            <div class="grid">
+                <div class="card" data-aos="zoom-in">
+                    <h3>Job Market Intelligence Platform</h3>
+                    <p style="font-size:0.9rem; color:#aaa;">Automated system aggregating millions of job postings into Power BI for real-time market analysis on skills, compensation, and grade.</p>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                    <h3>Skill Mapping Framework</h3>
+                    <p style="font-size:0.9rem; color:#aaa;">Data-driven system mapping 500+ skills to career paths and competency frameworks for enterprise clients.</p>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                    <h3>NGO Web Development</h3>
+                    <p style="font-size:0.9rem; color:#aaa;">Built a visually appealing and user-friendly website from scratch for an NGO.</p>
+                </div>
+                <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>Leave Management System</h3>
+                    <p style="font-size:0.9rem; color:#aaa;">Created a Google Sheets + Google Form based tracker for operational use.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="edu-cert-grid">
+                <div data-aos="fade-up">
+                    <h2>Education</h2>
+                    <div class="card">
+                        <h3>B.Tech in Electrical & Electronics Engineering </h3>
+                        <p>Padmanava College of Engineering (2016) </p>
+                    </div>
+                </div>
+                <div data-aos="fade-up">
+                    <h2>Certifications</h2>
+                    <ul style="color:var(--primary); font-weight: 600;">
+                        <li>Advanced MS Excel & Excel Dashboards</li>
+                        <li>Data Analytics & Data Mining</li>
+                        <li>SQL for Data Analysis</li>
+                        <li>UI/UX Design Fundamentals</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="accomplishments" data-aos="fade-up">
+            <h2>Accomplishments</h2>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="card" style="text-align:center;">
+                    <i class="fas fa-award fa-2x" style="color:gold; margin-bottom:10px;"></i>
+                    <p>Best Performer Award (2022)</p>
+                </div>
+                <div class="card" style="text-align:center;">
+                    <i class="fas fa-rocket fa-2x" style="color:var(--primary); margin-bottom:10px;"></i>
+                    <p>Rising Star Award (2020)</p>
+                </div>
+                <div class="card" style="text-align:center;">
+                    <i class="fas fa-file-alt fa-2x" style="color:#00ff88; margin-bottom:10px;"></i>
+                    <p>Winner – Pratibha Paper (2014)</p>
+                </div>
+                <div class="card" style="text-align:center;">
+                    <i class="fas fa-users fa-2x" style="color:var(--secondary); margin-bottom:10px;"></i>
+                    <p>Editorial & Robotics Leadership</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<section id="contact-cta" data-aos="zoom-in">
+    <div class="cta-block">
+        <h2>Want to see the data in action? Call me!</h2>        
+        <a href="Deepak_Kumar_Resume.docx" class="btn-download" download>
+            <i class="fas fa-file-download"></i> Download Full Resume
+        </a>
+    </div>
+</section>
+
+
+    <footer style="text-align:center; padding: 40px; opacity: 0.5; font-size: 0.8rem;">
+        &copy; Deepak Kumar
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+window.onload = function() {
+    const searchInput = document.getElementById('portfolioSearch');
+
+    if (searchInput) {
+        searchInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault(); 
+                
+                const input = this.value.toLowerCase().trim();
+                
+                const searchDatabase = [
+                    { id: 'projects', keys: ['project', 'build', 'made', 'portfolio', 'work', 'app'] },
+                    { id: 'tech-stack', keys: ['skill', 'tool', 'stack', 'software', 'python', 'bi', 'sql', 'tech'] },
+                    { id: 'experience', keys: ['job', 'company', 'history', 'career', 'spire', 'hgs', 'analyst'] },
+                    { id: 'journey', keys: ['about', 'bio', 'story', 'journey', 'who', 'deepak'] },
+                    { id: 'education', keys: ['degree', 'college', 'study', 'education', 'btech', 'university'] },
+                    { id: 'accomplishments', keys: ['award', 'winner', 'certificate', 'achieve', 'star', 'performer'] },
+                    { id: 'contact-cta', keys: ['resume', 'download', 'cv', 'contact', 'hire', 'email'] }
+                ];
+
+                let targetId = null;
+
+                for (const section of searchDatabase) {
+                    if (section.keys.some(key => input.includes(key))) {
+                        targetId = section.id;
+                        break;
+                    }
+                }
+
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    // Manual scroll calculation for perfect positioning
+                    const offset = 100; // Adjust this if the title is hidden
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = targetElement.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    this.value = ""; 
+                    this.style.boxShadow = "0 0 15px #00d4ff";
+                } else {
+                    this.style.boxShadow = "0 0 15px #ff4b2b";
+                    this.animate([
+                        { transform: 'translateX(-5px)' },
+                        { transform: 'translateX(5px)' }
+                    ], { duration: 100, iterations: 3 });
+                }
+            }
+        });
+    }
+};
+    </script>
+</body>
+</html>
